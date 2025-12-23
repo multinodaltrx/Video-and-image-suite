@@ -1,0 +1,514 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 23,
+      "steps": 4,
+      "cfg": 1,
+      "sampler_name": "dpmpp_sde_gpu",
+      "scheduler": "beta",
+      "denoise": 1,
+      "model": [
+        "556",
+        0
+      ],
+      "positive": [
+        "554",
+        0
+      ],
+      "negative": [
+        "554",
+        1
+      ],
+      "latent_image": [
+        "554",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "365",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "Single video frames"
+    }
+  },
+  "289": {
+    "inputs": {
+      "toggle": true,
+      "mode": "simple",
+      "num_loras": 1,
+      "lora_1_name": "Wan21_T2V_14B_lightx2v_cfg_step_distill_lora_rank32.safetensors",
+      "lora_1_strength": 1.0000000000000002,
+      "lora_1_model_strength": 1,
+      "lora_1_clip_strength": 1,
+      "lora_2_name": "None",
+      "lora_2_strength": 1.0000000000000002,
+      "lora_2_model_strength": 1,
+      "lora_2_clip_strength": 1,
+      "lora_3_name": "None",
+      "lora_3_strength": 1.0000000000000002,
+      "lora_3_model_strength": 1,
+      "lora_3_clip_strength": 1,
+      "lora_4_name": "None",
+      "lora_4_strength": 1.0000000000000002,
+      "lora_4_model_strength": 1,
+      "lora_4_clip_strength": 1,
+      "lora_5_name": "None",
+      "lora_5_strength": 1,
+      "lora_5_model_strength": 1,
+      "lora_5_clip_strength": 1,
+      "lora_6_name": "None",
+      "lora_6_strength": 1,
+      "lora_6_model_strength": 1,
+      "lora_6_clip_strength": 1,
+      "lora_7_name": "None",
+      "lora_7_strength": 1,
+      "lora_7_model_strength": 1,
+      "lora_7_clip_strength": 1,
+      "lora_8_name": "None",
+      "lora_8_strength": 1,
+      "lora_8_model_strength": 1,
+      "lora_8_clip_strength": 1,
+      "lora_9_name": "None",
+      "lora_9_strength": 1,
+      "lora_9_model_strength": 1,
+      "lora_9_clip_strength": 1,
+      "lora_10_name": "None",
+      "lora_10_strength": 1,
+      "lora_10_model_strength": 1,
+      "lora_10_clip_strength": 1
+    },
+    "class_type": "easy loraStack",
+    "_meta": {
+      "title": "EasyLoraStack"
+    }
+  },
+  "290": {
+    "inputs": {
+      "lora_stack": [
+        "289",
+        0
+      ],
+      "model": [
+        "555",
+        0
+      ]
+    },
+    "class_type": "easy loraStackApply",
+    "_meta": {
+      "title": "Apply Loras"
+    }
+  },
+  "365": {
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "523": {
+    "inputs": {
+      "model_name": "4x_NMKD-Siax_200k.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model (default 4x_UniversalUpscalerV2-Neutral_115000_swaG.pth)"
+    }
+  },
+  "524": {
+    "inputs": {
+      "upscale_model": [
+        "523",
+        0
+      ],
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale"
+    }
+  },
+  "529": {
+    "inputs": {
+      "text": "A friendly waitress in an Irish pub smiles warmly at the camera while holding up a rustic wooden tray. On the tray is a classic burger and fries meal, featuring a juicy burger with melted cheese, bacon, crisp lettuce, fresh tomato slices, and tangy pickle slices visible inside. The golden bun is sprinkled with sesame seeds, adding a rustic touch. The rendered scene shows the rich meat juices, enhancing the burger’s mouth-watering appeal. The tray also includes ketchup in small rustic bowls and a fresh, cool Coca-Cola with Carbon dioxide bubbles in it in a glass with ice cubes and a slice of lemon. The crispy, golden fries complement the meal perfectly. In the background on the left side, a man dressed in a Batman costume steps forward toward the foreground and confidently grabs the burger from the tray. The cozy pub ambiance with wooden interiors and soft lighting enhances the authentic, welcoming atmosphere.",
+      "clip": [
+        "550",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "530": {
+    "inputs": {
+      "text": "eating, chewing, slowmo video, slow motion, bullet time effect, low quality video, worst quality, blurry, mutation, deformation, amputation, bad anatomy, high contrast, overexposed, oversaturated, garish colours, colour shift, colour change, camera flash, bright, deformed face, bad teeth, poor eyes, deformed eyes, aliasing, pixelation, anime, toon, manga, drawing, 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很",
+      "clip": [
+        "550",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "549": {
+    "inputs": {
+      "unet_name": "Wan2_1-SkyReels-V2-I2V-14B-540P_fp8_e5m2.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "550": {
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "553": {
+    "inputs": {
+      "image": "temp_output_i2i_3b2e83d6-b24a-4d7a-ad7b-cc0aad4791f7.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "554": {
+    "inputs": {
+      "width": 768,
+      "height": 1152,
+      "length": [
+        "567",
+        0
+      ],
+      "batch_size": 1,
+      "positive": [
+        "529",
+        0
+      ],
+      "negative": [
+        "530",
+        0
+      ],
+      "vae": [
+        "365",
+        0
+      ],
+      "start_image": [
+        "553",
+        0
+      ]
+    },
+    "class_type": "WanImageToVideo",
+    "_meta": {
+      "title": "WanImageToVideo"
+    }
+  },
+  "555": {
+    "inputs": {
+      "nag_scale": 11,
+      "nag_alpha": 0.25,
+      "nag_tau": 2.5,
+      "input_type": "default",
+      "model": [
+        "549",
+        0
+      ],
+      "conditioning": [
+        "530",
+        0
+      ]
+    },
+    "class_type": "WanVideoNAG",
+    "_meta": {
+      "title": "WanVideoNAG (default: 11, 0.25, 2.5)"
+    }
+  },
+  "556": {
+    "inputs": {
+      "shift": 3.0000000000000004,
+      "model": [
+        "290",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "Shift (default 2.0, try 1.0 to 8.0)"
+    }
+  },
+  "557": {
+    "inputs": {
+      "frame_rate": [
+        "588",
+        1
+      ],
+      "loop_count": 0,
+      "filename_prefix": "VideoFlow-video",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Combine Images to Video"
+    }
+  },
+  "560": {
+    "inputs": {
+      "ckpt_name": "rife49.pth",
+      "clear_cache_after_n_frames": 10,
+      "multiplier": [
+        "584",
+        0
+      ],
+      "fast_mode": false,
+      "ensemble": true,
+      "scale_factor": 1,
+      "frames": [
+        "581",
+        0
+      ]
+    },
+    "class_type": "RIFE VFI",
+    "_meta": {
+      "title": "RIFE VFI (default: rife47 or rife49), decrease clear cache to lower memory usage"
+    }
+  },
+  "565": {
+    "inputs": {
+      "value": 5
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Video Length (1 to 5 seconds)"
+    }
+  },
+  "566": {
+    "inputs": {
+      "a": [
+        "565",
+        0
+      ],
+      "b": 16,
+      "operation": "multiply"
+    },
+    "class_type": "easy mathInt",
+    "_meta": {
+      "title": "->"
+    }
+  },
+  "567": {
+    "inputs": {
+      "a": [
+        "566",
+        0
+      ],
+      "b": 1,
+      "operation": "add"
+    },
+    "class_type": "easy mathInt",
+    "_meta": {
+      "title": "->"
+    }
+  },
+  "574": {
+    "inputs": {
+      "value": 2.0000000000000004
+    },
+    "class_type": "easy float",
+    "_meta": {
+      "title": "Upscale Factor (default 2: 2x)"
+    }
+  },
+  "579": {
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "easy imageSize",
+    "_meta": {
+      "title": "ImageSize"
+    }
+  },
+  "581": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "width": [
+        "593",
+        0
+      ],
+      "height": [
+        "594",
+        0
+      ],
+      "crop": "disabled",
+      "image": [
+        "524",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Resize Video Frames"
+    }
+  },
+  "584": {
+    "inputs": {
+      "value": 2
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Frame Multiplier (2 doubles fps)"
+    }
+  },
+  "586": {
+    "inputs": {
+      "value": 16
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Initial Frame Rate (default 16)"
+    }
+  },
+  "587": {
+    "inputs": {
+      "value": "a*b",
+      "a": [
+        "584",
+        0
+      ],
+      "b": [
+        "586",
+        0
+      ]
+    },
+    "class_type": "SimpleMath+",
+    "_meta": {
+      "title": "Final fps"
+    }
+  },
+  "588": {
+    "inputs": {
+      "value": "a",
+      "a": [
+        "586",
+        0
+      ]
+    },
+    "class_type": "SimpleMath+",
+    "_meta": {
+      "title": "fps"
+    }
+  },
+  "593": {
+    "inputs": {
+      "value": "a*b",
+      "a": [
+        "574",
+        0
+      ],
+      "b": [
+        "579",
+        0
+      ]
+    },
+    "class_type": "SimpleMath+",
+    "_meta": {
+      "title": "Upscaled Width"
+    }
+  },
+  "594": {
+    "inputs": {
+      "value": "a*b",
+      "a": [
+        "574",
+        0
+      ],
+      "b": [
+        "579",
+        1
+      ]
+    },
+    "class_type": "SimpleMath+",
+    "_meta": {
+      "title": "Upscaled Height"
+    }
+  },
+  "595": {
+    "inputs": {
+      "frame_rate": [
+        "587",
+        1
+      ],
+      "loop_count": 0,
+      "filename_prefix": "VideoFlow-video-upscaled",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "560",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Combine Images to Video"
+    }
+  },
+  "599": {
+    "inputs": {
+      "images": [
+        "560",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Final Frames"
+    }
+  }
+}
